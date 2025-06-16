@@ -25,6 +25,9 @@ func goGetenv(name string) string {
 const goenvName = "go.env"
 
 func findGoenv() (goenvPath string) {
+	if len(os.Args) > 1 && os.Args[1] == "tool" {
+		return "" // do not set GOENV automatically for tools
+	}
 	if goGetenv("GOOS") == "noos" && os.Getenv("GOENV") != "" {
 		// GOENV is probably set by user manualy to be used together with GOOS=noos
 		// TODO: what about go env -w GOENV
