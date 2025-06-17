@@ -28,9 +28,9 @@ func runGo(root string) {
 		newPath += string(filepath.ListSeparator) + p
 	}
 	environ := append(os.Environ(), "GOROOT="+root, "PATH="+newPath)
-	if goenv := findGoenv(); goenv != "" {
-		environ = append(environ, "GOENV="+goenv)
-	}
+	//if goenv := findGoenv(); goenv != "" {
+	//	environ = append(environ, "GOENV="+goenv)
+	//}
 	cmd.Env = dedupEnv(caseInsensitiveEnv, environ)
 
 	handleSignals()
